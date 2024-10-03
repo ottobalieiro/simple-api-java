@@ -9,7 +9,7 @@ jobs:
         - name: Imprimir mensagem
           rum: echo "Olá, Mundo"
     job2-goodbye:
-        runs-on: ubunto-latest
+        runs-on: ubuntu-latest
         steps:
         - name: Step 1 - Sequencia de instruções
           run: |
