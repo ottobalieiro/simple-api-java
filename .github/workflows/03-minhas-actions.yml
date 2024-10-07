@@ -6,17 +6,20 @@ jobs:
     checkout_java_docker:
         runs-on: ubuntu-latest
         steps:
-            - name: Git Checkout 
-              uses: actions/checkout@v4
-            - name: Setup java SDK
-              uses: actions/setup-java@v4
+            - name: Checkout
+              uses: actions/checkout@v4.2.0
+
+            - name: Setup java JDK
+              uses: actions/setup-java@v4.4.0
               with: 
                 distribution: 'temurin'
                 java-version: "21"
-            - name: Build
-              uses: docker/build-push-action@v6
+
+            - name: Build and push Docker images
+              uses: docker/build-push-action@v6.9.0
               with: 
                 push: false
+                
             - name: Executar scripts
               run: 
                 git branch
