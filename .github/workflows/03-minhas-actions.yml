@@ -1,27 +1,29 @@
 name: 03 - Actions
-on:
+
+on: 
     push:
-        branches: "features/**"
-jobs: 
+        branches: "feature/**"
+
+jobs:
     checkout_java_docker:
         runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4.2.0
+        steps:            
+            - name: Git Checkout
+              uses: actions/checkout@v4
 
-            - name: Setup java JDK
-              uses: actions/setup-java@v4.4.0
-              with: 
-                distribution: 'temurin'
-                java-version: "21"
+            - name: Setup Java SDK
+              uses: actions/setup-java@v4
+              with:
+                distribution: 'temurin' 
+                java-version: '21'
 
-            - name: Build and push Docker images
-              uses: docker/build-push-action@v6.9.0
-              with: 
-                push: false
-                
+            - name: Build
+              uses: docker/build-push-action@v6
+              with:
+                push: false                    
+
             - name: Executar scripts
-              run: 
+              run: |
                 git branch
-                java --version
+                java --version 
                 mvn clean package
